@@ -1,0 +1,183 @@
+<=========================================================>
+<=================>    BUG LOG HEADER   <=================>
+<=========================================================>
+Assignment:
+    MP2
+CheckPoint:
+    CP1
+CreateTime:
+    2022.09.20
+
+
+<--------------------------------------------------------->
+                          BUG 1                          
+<--------------------------------------------------------->
+Time:
+    2022.09.20.
+Creator:
+    Nikil Nambiar.
+Description:
+    Vertical line not working
+Solution:
+    Was using show_x instead of x in calculating p_off
+
+<--------------------------------------------------------->
+                          BUG 2                          
+<--------------------------------------------------------->
+Time:
+    2022.09.21.
+Creator:
+    Nikil Nambiar
+Description:
+    Status bar was too big and also we were using the wrong number for our maximum scan line register
+Solution:
+    Realized that I had to find out to use 200-18 for the start and multiply that by 2 for scan doubing and decrement by 1 since it's 0 incremented.
+    So essentially had to use 363 in binary and match up digits with appropriate registers and bits.
+
+<--------------------------------------------------------->
+                          BUG 3                          
+<--------------------------------------------------------->
+Time:
+    2022.09.28.
+Creator:
+    Nikil Nambiar.
+Description:
+    Was inputting chars into buffer incorrectly in text.c. 
+Solution:
+    Had to multiply each char by 8 to account for size of char
+<--------------------------------------------------------->
+                          BUG 4                          
+<--------------------------------------------------------->
+Time:
+    2022.09.28.
+Creator:
+    Nikil Nambiar.
+Description:
+    Using the bitmask in text.c incorrectly. First forgot to mask it with one, then would shift in my horizontal line for loop instead 
+    of the one for each bit
+Solution:
+    Initialize bitmask to x80 (10000000) then move the bitmask >>= 1 to at the end of my 'j' for loop
+
+<--------------------------------------------------------->
+                          BUG 5                          
+<--------------------------------------------------------->
+Time:
+    2022.09.28.
+Creator:
+    Nikil Nambiar.
+Description:
+    For my copy_statbar function used to wrong size for the value being pushed into ECX. Had $5760 (320 * 8)
+Solution:
+    Supposed to divide the number of rows by 4 so that there are 320*18/4 total addresses
+
+<--------------------------------------------------------->
+                          BUG 6                          
+<--------------------------------------------------------->
+Time:
+    2022.09.28.
+Creator:
+    Nikil Nambiar.
+Description:
+    Logic for drawing to middle of status bar was incorrect. Was trying to start drawing at index 20, but that wasn't centering 
+Solution:
+    Needed to factor length of computer message into determining starting location. (40-string length) / 2 would be the start
+
+<--------------------------------------------------------->
+                          BUG 7                          
+<--------------------------------------------------------->
+Time:
+    2022.09.28.
+Creator:
+    Nikil Nambiar.
+Description:
+    For user input put wrong char into my char* (display string).  
+Solution:
+    Created a count variable to start from 0 to go to end of strlen
+
+<--------------------------------------------------------->
+                          BUG 8                          
+<--------------------------------------------------------->
+Time:
+    2022.10.08.
+Creator:
+    Nikil Nambiar.
+Description:
+    Some of my hex values in my display_char function were incorrect when mapping them to the 7 segment display
+Solution:
+    Checked whichever ones weren't working and wrote out the segment and hex again. 
+
+<--------------------------------------------------------->
+                          BUG 9                          
+<--------------------------------------------------------->
+Time:
+    2022.10.08.
+Creator:
+    Nikil Nambiar.
+Description:
+    Decimal point was adding x8 since I was thinkning that bit 3 was 1 instead of bit 4 (0 indexed)
+Solution:
+    Remembered it was 0 indexed and changed it to x10
+
+<--------------------------------------------------------->
+                          BUG 10                          
+<--------------------------------------------------------->
+Time:
+    2022.10.08
+Creator:
+    Nikil Nambiar.
+Description:
+    overall logic was wrong for set_led. didnt understand the first four bits correspond to what the first led should output.
+Solution:
+    read through the documentation and map the bits out
+
+<--------------------------------------------------------->
+                          BUG 11                          
+<--------------------------------------------------------->
+Time:
+    2022.10.08.
+Creator:
+    Nikil Nambiar.
+Description:
+    For my byte mask in set led I had the wrong value so I was getting unwanted bits. Had x00F
+Solution:
+    Went through program and realized had the wrong value 
+
+<--------------------------------------------------------->
+                          BUG 12                          
+<--------------------------------------------------------->
+Time:
+    2022.10.08.
+Creator:
+    Nikil Nambiar
+Description:
+    Tux wasn't reading inputs when clicking on buttons. Needed to get the info from the kernel space and bring it to the user space
+Solution:
+    Use copy_to_user to read the info from the button packet and bring into the user space and then buttons were able to start working
+
+
+<--------------------------------------------------------->
+                          BUG 13                          
+<--------------------------------------------------------->
+Time:
+    2022.??.??.
+Creator:
+    First Last.
+Description:
+    ....
+Solution:
+    ....
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
